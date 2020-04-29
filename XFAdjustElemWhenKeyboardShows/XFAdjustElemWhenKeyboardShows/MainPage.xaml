@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFAdjustElemWhenKeyboardShows.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:XFAdjustElemWhenKeyboardShows"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <d:ContentPage.BindingContext>
+        <local:MainPage />
+    </d:ContentPage.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+
+        <Entry
+            Grid.Row="0"
+            BackgroundColor="LightPink"
+            Placeholder="View Not Scroll" />
+        <ListView
+            Grid.Row="1"
+            HasUnevenRows="True"
+            ItemsSource="{Binding SampleListData}">
+            <d:ListView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>item One</x:String>
+                    <x:String>item Two</x:String>
+                    <x:String>item Three</x:String>
+                    <x:String>item Four</x:String>
+                    <x:String>item Five</x:String>
+                    <x:String>item Six</x:String>
+                </x:Array>
+            </d:ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Frame
+                                Margin="10"
+                                BackgroundColor="LightBlue"
+                                HeightRequest="100">
+                                <Label
+                                    FontSize="Large"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding .}"
+                                    VerticalOptions="Center" />
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Entry
+            Grid.Row="2"
+            BackgroundColor="LightGreen"
+            Placeholder="View will Scroll" />
+    </Grid>
+
+</ContentPage>
